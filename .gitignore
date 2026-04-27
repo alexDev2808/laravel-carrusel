@@ -1,28 +1,65 @@
-/.phpunit.cache
-/bootstrap/ssr
+# Dependencies
 /node_modules
+/vendor
+
+# Build output
 /public/build
+/bootstrap/ssr
+
+# Laravel generated / runtime
 /public/hot
 /public/storage
 /storage/*.key
 /storage/pail
+/storage/app/public/*
+!/storage/app/public/.gitkeep
+/storage/logs/*
+!/storage/logs/.gitkeep
+/storage/framework/cache/*
+!/storage/framework/cache/.gitkeep
+/storage/framework/sessions/*
+!/storage/framework/sessions/.gitkeep
+/storage/framework/views/*
+!/storage/framework/views/.gitkeep
+
+# Wayfinder / auto-generated TS
 /resources/js/actions
 /resources/js/routes
 /resources/js/wayfinder
-/vendor
-.DS_Store
+
+# Environment
 .env
 .env.backup
 .env.production
-.phpactor.json
+.env.*.local
+.env.local
+
+# Testing
+/.phpunit.cache
 .phpunit.result.cache
-Homestead.json
-Homestead.yaml
+/coverage
+
+# Logs
 npm-debug.log
 yarn-error.log
+*.log
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Laravel config files (local dev only)
+Homestead.json
+Homestead.yaml
 /auth.json
+
+# IDEs
 /.fleet
 /.idea
 /.nova
 /.vscode
 /.zed
+*.swp
+*.swo
+
+.claude
