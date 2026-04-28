@@ -138,12 +138,12 @@ onUnmounted(() => {
             </div>
 
             <!-- Información adicional -->
-            <div class="mb-4 px-5 py-3 rounded-xl bg-white/5 backdrop-blur-sm border border-blue-400/20 hover:bg-white/10 transition duration-300">
-                <div class="flex flex-col items-center mb-4">
+            <div class="mb-1 px-5 py-3 rounded-xl bg-white/5 backdrop-blur-sm border border-blue-400/20 hover:bg-white/10 transition duration-300">
+                <div class="flex flex-col items-center mb-1">
                     <img src="/Info.png" alt="Info" class="w-4 h-4 drop-shadow-lg">
-                    <h3 class="text-lg font-bold tracking-wide text-blue-200">Información general</h3>
+                    <h3 class="text-md font-bold tracking-wide text-blue-200">Información general</h3>
                 </div>
-                <img src="/QR.png" alt="QR Code" class="w-20 h-20 mx-auto rounded-lg shadow-lg border border-blue-400/30 p-2 bg-white/10">
+                <img src="/QR.png" alt="QR Code" class="w-20 h-20 mx-auto rounded-lg shadow-lg border border-blue-400/30 pt-0 bg-white/10">
             </div>
              
             <!-- Fecha y Hora -->
