@@ -64,6 +64,18 @@ function goTo(index: number) {
 
 const currentImage = computed(() => images.value[current.value] ?? null);
 
+function formatDate(date: Date): string {
+    const dias = ['Domingo', 'Lunes', 'Martes', 'Miércoles', 'Jueves', 'Viernes', 'Sábado'];
+    const meses = ['Enero', 'Febrero', 'Marzo', 'Abril', 'Mayo', 'Junio', 'Julio', 'Agosto', 'Septiembre', 'Octubre', 'Noviembre', 'Diciembre'];
+    
+    const diaSemana = dias[date.getDay()];
+    const dia = date.getDate();
+    const mes = meses[date.getMonth()];
+    const año = date.getFullYear();
+    
+    return `${diaSemana}, ${dia} de ${mes} de ${año}`;
+}
+
 watch(duration, startTimers);
 
 watch(
@@ -97,14 +109,47 @@ onUnmounted(() => {
     <Head title="Carrusel" />
     <div class="flex h-screen w-full">
         <!-- Banner -->
-        <div class="w-1/3 bg-blue-950 p-8 text-white">
-            <h1 class="mb-4 text-4xl font-bold">Frase de la semana</h1>
-            <p class="mb-6 text-lg italic leading-relaxed">{{ quote || '—' }}</p>
-            <p class="text-sm font-medium uppercase tracking-widest opacity-70">{{ author ? `— ${author}` : '' }}</p>
+        <div class="w-2/6 h-screen bg-gradient-to-br from-blue-950 via-blue-900 to-slate-900 p-2 text-white flex flex-col justify-between relative overflow-hidden shadow-2xl">
+            <!-- Efecto decorativo de fondo -->
+            <div class="absolute top-0 right-0 w-96 h-96 bg-blue-500/5 rounded-full blur-3xl -z-10"></div>
+            <div class="absolute bottom-0 left-0 w-80 h-80 bg-slate-500/5 rounded-full blur-3xl -z-10"></div>
 
+            <!-- Logo Section -->
+            <div class="flex items-center justify-center pt-4">
+                <img src="/Taurus_slogan.png" alt="Taurus Slogan" class="w-28 drop-shadow-lg transform hover:scale-105 transition duration-300">
+            </div>
+
+            <!-- Quote Section -->
+            <div class="flex-1 flex flex-col justify-center px-2">
+                <div class="pb-6 border-b border-blue-400/30">
+                    <h1 class="mb-4 text-4xl text-center font-black tracking-tight leading-tight">
+                        <span class="bg-gradient-to-r from-blue-200 via-blue-100 to-slate-200 bg-clip-text text-transparent">
+                            Frase de la semana
+                        </span>
+                    </h1>
+                </div>
+                
+                <p class="text-start mb-6 text-xl italic font-light leading-relaxed text-blue-100 min-h-20">{{ quote || '—' }}</p>
+                <p class="text-end text-sm font-semibold uppercase tracking-widest text-blue-300 mb-2 pl-2">{{ author ? `— ${author}` : '' }}</p>
+            </div>
+
+            <!-- Información adicional -->
+            <div class="mb-4 p-5 rounded-xl bg-white/5 backdrop-blur-sm border border-blue-400/20 hover:bg-white/10 transition duration-300">
+                <div class="flex flex-col items-center mb-4">
+                    <img src="/Info.png" alt="Info" class="w-6 h-6 drop-shadow-lg">
+                    <h3 class="text-2xl font-bold tracking-wide text-blue-200">Información general</h3>
+                </div>
+                <img src="/QR.png" alt="QR Code" class="w-32 h-32 mx-auto rounded-lg shadow-lg border border-blue-400/30 p-2 bg-white/10">
+            </div>
+             
+            <!-- Fecha y Hora -->
+            <div class="flex flex-col items-center justify-center text-xl font-semibold text-blue-100 tracking-wider pt-4 border-t border-blue-400/20">
+                <span class="text-sm text-blue-300 mb-2">{{ formatDate(new Date()) }}</span>
+                <span class="text-4xl font-bold text-white drop-shadow-lg">{{ new Date().toLocaleTimeString() }}</span>
+            </div>
         </div>
 
-        <div class="relative flex h-screen w-2/3 items-center justify-center overflow-hidden bg-black">
+        <div class="relative flex h-screen w-4/6 items-center justify-center overflow-hidden bg-black">
 
                 <!-- Slides -->
                 <template v-if="images.length > 0">
