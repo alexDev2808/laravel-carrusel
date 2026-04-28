@@ -138,18 +138,18 @@ onUnmounted(() => {
             </div>
 
             <!-- Información adicional -->
-            <div class="mb-4 px-5 py-3 rounded-xl bg-white/5 backdrop-blur-sm border border-blue-400/20 hover:bg-white/10 transition duration-300">
+            <!-- <div class="mb-4 px-5 py-3 rounded-xl bg-white/5 backdrop-blur-sm border border-blue-400/20 hover:bg-white/10 transition duration-300">
                 <div class="flex flex-col items-center mb-4">
                     <img src="/Info.png" alt="Info" class="w-8 h-8 drop-shadow-lg">
                     <h3 class="text-xl font-bold tracking-wide text-blue-200">Información general</h3>
                 </div>
                 <img src="/QR.png" alt="QR Code" class="w-32 h-32 mx-auto rounded-lg shadow-lg border border-blue-400/30 p-2 bg-white/10">
-            </div>
+            </div> -->
              
             <!-- Fecha y Hora -->
             <div class="flex flex-col items-center justify-center text-xl font-semibold text-blue-100 tracking-wider pt-4 border-t border-blue-400/20">
                 <span class="text-sm text-blue-300 mb-2">{{ formatDate(new Date()) }}</span>
-                <span class="text-5xl font-bold text-white drop-shadow-lg">{{ new Date().toLocaleTimeString() }}</span>
+                <span class="text-5xl font-bold text-white drop-shadow-lg">{{ new Date().toLocaleTimeString('es-ES', { hour12: false }) }}</span>
             </div>
         </div>
 
