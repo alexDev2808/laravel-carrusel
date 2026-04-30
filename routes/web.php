@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Admin\UserController;
 use App\Http\Controllers\CarouselAdminController;
 use App\Http\Controllers\CarouselController;
 use App\Http\Controllers\ChatController;
@@ -13,6 +14,10 @@ Route::middleware(['auth', 'verified'])->group(function () {
     Route::get('carrusel', [CarouselController::class, 'index'])->name('carrusel');
     Route::get('chat', [ChatController::class, 'index'])->name('chat');
     Route::post('chat', [ChatController::class, 'store'])->name('chat.store');
+
+    Route::middleware('role:super')->prefix('admin')->name('admin.')->group(function () {
+        Route::resource('users', UserController::class)->except(['show']);
+    });
 
     Route::prefix('carrusel/admin')->name('carrusel.admin.')->group(function () {
         Route::get('/', [CarouselAdminController::class, 'index'])->name('index');
